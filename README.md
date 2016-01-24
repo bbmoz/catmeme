@@ -1,4 +1,4 @@
-# Cat Meme Generator
+# Cat Meme
 
 Shows a hopefully funny cat meme from the interwebs.
 

@@ -2,9 +2,9 @@ body {
   background-color: lightpink;
   text-align: center;
   font-family: 'Indie Flower', cursive;
-  font-size: 40px;
+  font-size: 50px;
 }
 
-img {
-  height: 200px;
+h1 {
+  margin: 40px 0 20px 0;
 }

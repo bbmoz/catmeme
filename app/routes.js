@@ -1,13 +1,6 @@
-const scrape = require('./scrape.js');
-
 module.exports = (function routes() {
   'use strict';
-
-  let imagesStore = [];
-
-  function getRandomImage(images) {
-    return images[Math.floor(Math.random() * images.length)];
-  }
+  const scrape = require('./scrape.js');
 
   return {
     index: (req, res) => {
@@ -15,18 +8,22 @@ module.exports = (function routes() {
     },
 
     images: (req, res) => {
-      if (imagesStore.length === 0) {
-        scrape(function (images) {
-          res.json({
-            image: getRandomImage(images)
+      scrape.previewImageNames((e1, imageNames) => {
+        if (e1 === null) {
+          const randomImageName = imageNames[Math.floor(Math.random() * imageNames.length)];
+          scrape.getActualImageSrc(randomImageName, (e2, imageSrc) => {
+            if (e2 === null) {
+              res.json({
+                image: imageSrc
+              });
+            } else {
+              console.log(e2);
+            }
           });
-          imagesStore = images;
-        });
-      } else {
-        res.json({
-          image: getRandomImage(imagesStore)
-        });
-      }
+        } else {
+          console.log(e1);
+        }
+      });
     }
   };
 }());

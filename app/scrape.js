@@ -17,7 +17,7 @@ module.exports = (function scrape() {
         if (imageNamesStore === undefined) {
           const imageNames = yield request
             .useragent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36')
-            .goto('https://www.google.com/search?q=cute+cat+meme&tbm=isch&tbs=isz:m')
+            .goto('https://www.google.com/search?q=cat+meme&tbm=isch&tbs=isz:m')
             .wait('img.rg_i')
             .evaluate(function () {
               const imageNames = [];
@@ -48,7 +48,7 @@ module.exports = (function scrape() {
           return imageUrlStore[imageName];
         } else {
           const imageSrc = yield request
-            .goto(`https://www.google.com/search?q=cute+cat+meme&tbm=isch&tbs=isz:m#imgrc=${encodeURIComponent(imageName)}`)
+            .goto(`https://www.google.com/search?q=cat+meme&tbm=isch&tbs=isz:m#imgrc=${encodeURIComponent(imageName)}`)
             .wait('#irc_cc img.irc_mi[src^="http"]')
             .evaluate(function () {
               const possibleImages = document.querySelectorAll('#irc_cc img.irc_mi[src^="http"]');

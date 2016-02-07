@@ -33,7 +33,6 @@ module.exports = (function scrape() {
           return imageNamesStore;
         }
       })(function (error, imageNames) {
-        console.log(imageNames.length);
         if (error) {
           cb(error);
         } else {
